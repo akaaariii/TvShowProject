@@ -24,11 +24,6 @@ const sanitizeData = (data) => {
   return tvshowList;
 };
 
-// For progress bar
-const percentageToDegrees = (percentage) => {
-  return (percentage / 100) * 360;
-}
-
 const displayData = async (keyword = "popularity.desc") => {
   const getList = await getTVshow(keyword);
   $(".list").empty();
@@ -90,6 +85,11 @@ const displayData = async (keyword = "popularity.desc") => {
     }
   });
 };
+
+// For progress bar
+const percentageToDegrees = (percentage) => {
+  return (percentage / 100) * 360;
+}
 
 
 getTVshow()

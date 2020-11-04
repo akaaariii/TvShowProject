@@ -2,6 +2,11 @@
   color: white;
   max-width: 1200px;
 }
+.choose_option {
+  padding: 30px;
+}
+
+
 .list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -10,6 +15,11 @@
   padding: 3px;
   position: relative;
   margin-bottom: 25px;
+  transition: transform .2s;
+}
+.tvshow_item:hover {
+  transform: scale(1.1);
+  z-index: 999;
 }
 .progress_icon {
   position: absolute;
@@ -22,6 +32,8 @@ h3 {
   text-align: center;
 }
 
+
+/* CIRCULAR PROGRESS BAR bootstrap */
 .progress {
   width: 40px;
   height: 40px;
@@ -79,7 +91,7 @@ h3 {
   transform-origin: center right;
 }
 .progress .progress-value {
-  z-index: 999;
+  z-index: 100;
   position: absolute;
   top: 0;
   left: 0;
