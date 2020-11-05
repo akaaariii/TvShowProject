@@ -1,7 +1,7 @@
-const getTVshow = async (keyword) => {
+const getTVshow = async (keyword, year) => {
   try {
     let result = await $.ajax({
-      url: `https://api.themoviedb.org/3/discover/tv?api_key=${config.API_KEY}&language=en-US&sort_by=${keyword}&page=1&timezone=America%2FNew_York&include_null_first_air_dates=false`,
+      url: `https://api.themoviedb.org/3/discover/tv?api_key=${config.API_KEY}&sort_by=${keyword}&first_air_date_year=${year}`,
       type: "GET",
       dataType: "json",
     });
@@ -16,21 +16,21 @@ const sanitizeData = (data) => {
   for (let i = 0; i < 12; i++) {
     tvshowList.push({
       id: data.results[i].id,
-      title: data.results[i].original_name,
-      image: `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`,
+      title: data.results[i].name,
+      image: (typeof data.results[i].backdrop_path === 'object') ? 'https://via.placeholder.com/500x281/9e9e9e/FFFFFF/?text=No image for this TV show' : `https://image.tmdb.org/t/p/w500${data.results[i].backdrop_path}`,
       voteAve: data.results[i].vote_average,
     });
   }
   return tvshowList;
 };
 
-const displayData = async (keyword = "popularity.desc") => {
-  const getList = await getTVshow(keyword);
+const displayData = async (keyword = "popularity.desc", year = 2020) => {
+  const getList = await getTVshow(keyword, year);
   $(".list").empty();
 
   getList.forEach((data) => {
     const itemDiv = $('<div class="tvshow_item"></div>');
-    const img = $("<img>").attr("src", data.image);
+    const img = $("<img>").attr("src", data.image).attr("alt", `TV show (${data.title})`);
     const title = $("<h3></h3>").text(data.title);
     itemDiv.append(img);
     itemDiv.append(title);
@@ -97,8 +97,13 @@ getTVshow()
     displayData();
   })
   .then(() => {
+    let keyword, year;
+    $("input").change((e) => {
+      year = $(e.target).val();
+      displayData(keyword, year);
+    })
     $("select").change((e) => {
-      let keyword = $(e.target).val();
-      displayData(keyword);
+      keyword = $(e.target).val();
+      displayData(keyword, year);
     });
   });
