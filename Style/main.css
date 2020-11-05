@@ -117,8 +117,8 @@ main {
   margin-left: 12px;
 }
 footer {
-  background: rgb(15, 15, 15);
-  padding: 15px;
-  color: rgb(184, 183, 183);
-  font-size: 20px;
+  background: var(--header-background);
+  padding: var(--medium-pad);
+  color: var(--light-color);
+  font-size: var(--medium-font);
 }
