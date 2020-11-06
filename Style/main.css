@@ -12,7 +12,10 @@
    --header-background :rgb(104, 5, 5);
    --medium-font:20px;
    --larg-font:30px;   
-   --favourite-color :rgb(104, 5, 5);
+   --favorite-color :rgb(104, 5, 5);
+}
+*, *:before , *:after {
+   box-sizing: inherit;
 }
 img{
    max-width:100%;
@@ -89,12 +92,10 @@ h5{
 .fa-heart{
    color: var(--light-color);
 }
-.favourite {
-   color: var(--favourite-color);
+.favorite {
+   color: var(--favorite-color);
 }
-*,*::before,*::after {
-  box-sizing: border-box;
-}
+
 img {
   display: block;
   max-width: 100%;
