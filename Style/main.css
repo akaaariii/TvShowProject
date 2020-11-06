@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 :root{
    --font-name :'Commissioner', sans-serif;
    --max-width :90%;
@@ -32,8 +31,6 @@ body{
 header{
    margin-top:var(--margin-bottom);
 }
-=======
->>>>>>> main
 main {
     min-height: calc(100vh - 56px - 50px);
   }
@@ -78,7 +75,6 @@ main {
  .favourite {
     color: var(--favourite-color);
  }
-<<<<<<< HEAD
  .list {
    display:flex;
    flex-wrap:wrap;
@@ -123,6 +119,4 @@ img {
   max-width: 100%;
   height: auto;
 }
-=======
->>>>>>> main
 
