@@ -1,3 +1,39 @@
+<<<<<<< HEAD
+:root{
+   --font-name :'Commissioner', sans-serif;
+   --max-width :90%;
+   --dark-color:#0e0e0f;
+   --light-color: rgb(207, 204, 204);
+   --brand-color:#3131ee;
+   --four-col : 25%;
+   --margin-bottom: 10px;
+   --small-pad : 8px; 
+   --medium-pad : 12px;
+   --background: rgb(51, 49, 49);
+   --header-background :rgb(104, 5, 5);
+   --medium-font:20px;
+   --larg-font:30px;   
+   --favorite-color :rgb(104, 5, 5);
+}
+*, *:before , *:after {
+   box-sizing: inherit;
+}
+img{
+   max-width:100%;
+   display:block;
+   position : unset;
+   /* max-height: 350px; */
+}
+body{
+   max-width: var(--max-width);
+   margin: auto;
+   background-color: var(--dark-color);
+}
+header{
+   margin-top:var(--margin-bottom);
+}
+=======
+>>>>>>> main
 main {
     min-height: calc(100vh - 56px - 50px);
   }
@@ -42,4 +78,51 @@ main {
  .favourite {
     color: var(--favourite-color);
  }
+<<<<<<< HEAD
+ .list {
+   display:flex;
+   flex-wrap:wrap;
+   justify-content: space-between;
+}
+
+.card {
+   width:var(--four-col);
+   margin-bottom: var(--margin-bottom);
+   position : relative;
+   /* max-height: calc(80vh - 56px - 50px); */
+   background-color: var(--background);
+   border-color:  rgb(143, 140, 140);
+}
+.card a{
+   color:var(--amazon-color);
+}
+.card-title{
+   color:var(--light-color);
+   padding: var(--small-pad);
+}
+h5{
+   color: var(--light-color);
+}
+.header-content{
+   margin: var(--margin-bottom);
+   color: var(--light-color);
+   padding: var(--medium-pad);
+}
+.container-fluid {
+   max-width: var(--max-width);
+}
+.fa-heart{
+   color: var(--light-color);
+}
+.favorite {
+   color: var(--favorite-color);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+=======
+>>>>>>> main
 
