@@ -24,13 +24,22 @@ const sanitizeData = (data) => {
   return tvshowList;
 };
 
+const redirectToTvshowPage = () => {
+  $('img').click(e => {
+    const target = $(e.target);
+    const id = target.attr('id');
+    document.location.href = `./tvShowPage.html?id=${id}`;
+  })
+}
+
+
 const displayData = async (keyword = "popularity.desc", year = 2020) => {
   const getList = await getTVshow(keyword, year);
   $(".list").empty();
 
   getList.forEach((data) => {
     const itemDiv = $('<div class="tvshow_item"></div>');
-    const img = $("<img>").attr("src", data.image).attr("alt", `TV show (${data.title})`);
+    const img = $("<img>").attr("src", data.image).attr("alt", `TV show (${data.title})`).attr("id", data.id);
     const title = $("<h3></h3>").text(data.title);
     itemDiv.append(img);
     itemDiv.append(title);
@@ -84,6 +93,8 @@ const displayData = async (keyword = "popularity.desc", year = 2020) => {
       }
     }
   });
+
+  redirectToTvshowPage();
 };
 
 // For progress bar
