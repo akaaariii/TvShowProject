@@ -1,14 +1,12 @@
-.container {
-  color: white;
-  max-width: 1200px;
-}
 h2 {
   padding-top: 20px;
+  font-family: var(--font-title);
 }
 .choose_option {
   padding: 30px;
-  display: flex;
-  justify-content: space-around;
+}
+.choose_option div {
+  margin-bottom: var(--margin-bottom);
 }
 select {
   width: 250px;
@@ -17,7 +15,7 @@ select {
 
 .list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 .tvshow_item {
   padding: 3px;
@@ -28,6 +26,9 @@ select {
 .tvshow_item:hover {
   transform: scale(1.1);
   z-index: 999;
+}
+.tvshow_item img {
+  cursor: pointer;
 }
 .progress_icon {
   position: absolute;
@@ -41,11 +42,26 @@ h3 {
   margin-top: 10px;
 }
 
+@media (min-width: 768px){
+  .choose_option {
+    display: flex;
+    justify-content: space-around;
+  }
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px){
+  .list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 
 /* CIRCULAR PROGRESS BAR bootstrap */
 .progress {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   background: none;
   position: relative;
 }

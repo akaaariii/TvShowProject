@@ -1,0 +1,113 @@
+.tvshow_image img {
+  width: 60%;
+  margin: auto;
+}
+.tvshow_info {
+  margin: 10px auto;
+}
+.tvshow_info h2 {
+  font-family: var(--font-title);
+  margin-bottom: var(--margin-bottom);
+  text-align: center;
+}
+.tvshow_info > p {
+  text-align: center;
+}
+.tvshow_info h4 {
+  margin-bottom: var(--margin-bottom);
+}
+.tvshow_info > div {
+  margin: 30px 0;
+}
+.progress_icon .p {
+  font-size: var(--font-medium);
+}
+
+@media (min-width: 768px){
+  .tvshow {
+    display: flex;
+    margin-top: 40px;
+  }
+  .tvshow_image {
+    width: 35%;
+  }
+  .tvshow_image img {
+    width: 100%;
+  }
+  .tvshow_info {
+    margin: auto 40px;
+    width: 65%;
+  }
+  .tvshow_info h2 {
+    text-align: start;
+  }
+  .tvshow_info > p {
+    text-align: start;
+  }
+}
+
+
+/* CIRCULAR PROGRESS BAR bootstrap */
+.progress {
+  width: 80px;
+  height: 80px;
+  background: none;
+  position: relative;
+  margin: 20px 0;
+}
+.progress::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #313131;
+  border: 5px solid #eee;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.progress > span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+.progress .progress-left {
+  left: 0;
+}
+.progress .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 5px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+}
+.progress .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+.progress .progress-right {
+  right: 0;
+}
+.progress .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+.progress .progress-value {
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
