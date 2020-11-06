@@ -28,7 +28,7 @@ const redirectToTvshowPage = () => {
   $('img').click(e => {
     const target = $(e.target);
     const id = target.attr('id');
-    document.location.href = `./tvShowPage.html?id=${id}`;
+    open(`./tvShowPage.html?id=${id}`, '_blank');
   })
 }
 
