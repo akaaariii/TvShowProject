@@ -1,20 +1,17 @@
-.tvshow {
-  display: flex;
-  margin-top: 40px;
-}
-.tvshow_image {
-  width: 35%;
-}
 .tvshow_image img {
-  width: 100%;
+  width: 60%;
+  margin: auto;
 }
 .tvshow_info {
-  margin: auto 40px;
-  width: 65%;
+  margin: 10px auto;
 }
 .tvshow_info h2 {
   font-family: var(--font-title);
   margin-bottom: var(--margin-bottom);
+  text-align: center;
+}
+.tvshow_info > p {
+  text-align: center;
 }
 .tvshow_info h4 {
   margin-bottom: var(--margin-bottom);
@@ -24,6 +21,29 @@
 }
 .progress_icon .p {
   font-size: var(--font-medium);
+}
+
+@media (min-width: 768px){
+  .tvshow {
+    display: flex;
+    margin-top: 40px;
+  }
+  .tvshow_image {
+    width: 35%;
+  }
+  .tvshow_image img {
+    width: 100%;
+  }
+  .tvshow_info {
+    margin: auto 40px;
+    width: 65%;
+  }
+  .tvshow_info h2 {
+    text-align: start;
+  }
+  .tvshow_info > p {
+    text-align: start;
+  }
 }
 
 
