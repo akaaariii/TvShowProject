@@ -22,19 +22,17 @@ $(function(){
             let data = {
                 title:d.original_name,
                 image:'https://image.tmdb.org/t/p/w440_and_h660_face'+ d.poster_path,
-                vote:d.vote_average,
+                vote:d.vote_average*10,
                 release_date:d.release_date,
                 overview:d.overview,
                 id:d.id 
               };
               movieList.push(data);
         })
-        // console.log(movieList)
         return movieList;
     }
     const checkfavorite = (item) => {
-        const id = toString(item.id);
-        const index = favoriteList.findIndex(e => e.target === id);
+        const index = favoriteList.findIndex(e => e.id === item.id);
         return (index < 0) ? false : true;
     }
 
@@ -71,13 +69,14 @@ $(function(){
         const list =  $('.list');
         list.empty();
         movieList.forEach((d)=>{
+            console.log(d)
             const isfavorite = checkfavorite(d);
             const card = $('<div class="card"></div>');
             const img = $('<img>').attr('src', d.image).attr('id', d.id);
             const cardBody = $('<div class="card-body"></div>');
             const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
             const title = $('<h5></h5>').text(`Title : ${d.title}`);
-            const vote = $('<h5></h5>').text(`Rate : ${d.vote}`);
+            const vote = $('<h5></h5>').text(`Rate : ${d.vote}%`);
             const icon = isfavorite ? $('<i class="fas fa-heart favorite"></i>') : $('<i class="fas fa-heart"></i>');
            
             cardTitle.append(vote);
