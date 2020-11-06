@@ -233,3 +233,7 @@ footer ul li {
     flex-direction: row;
   }
 }
+.message h3{
+  color: var(--favourite-color );
+  margin: var(--margin-bottom);
+}
