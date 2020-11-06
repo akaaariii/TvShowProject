@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root{
    --font-name :'Commissioner', sans-serif;
    --max-width :90%;
@@ -31,32 +32,53 @@ body{
 header{
    margin-top:var(--margin-bottom);
 }
+=======
+>>>>>>> main
 main {
-    background: var(--background);
     min-height: calc(100vh - 56px - 50px);
   }
- .navbar-brand{
-    color: var(--dark-color);
-    font-size: var(--larg-font);
+.list {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+ }
+ 
+ .card {
+    width:var(--four-col);
+    margin-bottom: var(--margin-bottom);
+    position : relative;
+    /* max-height: calc(80vh - 56px - 50px); */
+    background-color: var(--background);
+    border-color:  rgb(143, 140, 140);
+ }
+ .card a{
+    color:var(--amazon-color);
+ }
+ .card-title{
+    color:var(--light-color);
+    padding: var(--small-pad);
+ }
+ .card-body img {
+   cursor: pointer;
+ }
+ h5{
+    color: var(--light-color);
+ }
+ .header-content{
+    margin: var(--margin-bottom);
+    color: var(--light-color);
     padding: var(--medium-pad);
-    
  }
- .nav-item{
-     color:var(--dark-color);
-     font-size:var(--medium-font);
-     padding: var(--medium-pad);
-     margin-left: var(--margin-bottom);
+ .container-fluid {
+    max-width: var(--max-width);
  }
- footer{
-    background:var(--header-background);
-    padding: var(--medium-pad);
-    color:var(--dark-color);
-    font-size: var(--medium-font);
+ .fa-heart{
+    color: var(--light-color);
  }
- .logo{
-    width: 5%;
-    
+ .favourite {
+    color: var(--favourite-color);
  }
+<<<<<<< HEAD
  .list {
    display:flex;
    flex-wrap:wrap;
@@ -101,25 +123,6 @@ img {
   max-width: 100%;
   height: auto;
 }
+=======
+>>>>>>> main
 
-main {
-  background: rgb(46, 45, 45);
-  min-height: calc(100vh - 56px - 50px);
-}
-.navbar-brand {
-  color: red;
-  font-size: 30px;
-  padding: 12px;
-}
-.nav-item {
-  color: rgb(245, 239, 239);
-  font-size: 25px;
-  padding: 15px;
-  margin-left: 12px;
-}
-footer {
-  background: var(--header-background);
-  padding: var(--medium-pad);
-  color: var(--light-color);
-  font-size: var(--medium-font);
-}

@@ -1,70 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover | MAK TV-Show</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+    integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-  <title>MAK TV-Show - Discover</title>
-  <script src="../Scripts/config.js"></script>
-  <link rel="stylesheet" href="../Style/main.css">
+  <link rel="stylesheet" href="../Style/common.css" />
   <link rel="stylesheet" href="../Style/discover.css">
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg " style="background-color: #0c0c0c">
-      <a class="navbar-brand" href="homePage.html">MAK TV Show</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-          <a class="nav-item nav-link" href="aboutPage.html">About</a>
-          <a class="nav-item nav-link" href="favoritePage.html">Favorit</a>
-          <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"
-            id="loginbtn">Login</a>
-        </div>
-      </div>
-      <!-- Start of login modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Username:</label>
-                  <input type="text" class="form-control" id="recipient-name" />
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Email:</label>
-                  <input type="text" class="form-control" id="recipient-email" />
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">Password:</label>
-                  <input type="password" class="form-control" id="recipient-password" />
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
-              <button type="submit" class="btn btn-primary" id="login">
-                Login
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End of login modal -->
+    <h1 class="title"><a href="index.html">MAK TV Show</a></h1>
+    <button class="menu" id="menu">
+      <span class="button-content" tabindex="-1">
+        <span class="sr-only">Menu</span>
+        <span class="bar"></span>
+      </span>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="aboutPage.html">About</a></li>
+        <li><a href="discoverPage.html">Discover</a></li>
+        <li><a href="favoritePage.html">Favorite</a></li>
+      </ul>
     </nav>
   </header>
   <main>
@@ -89,9 +52,23 @@
     </div>
   </main>
   <footer>
-    <small>For educational purpose only</small>
+    <section>
+      <p>For educational purpose only</p>
+      <p>&copy; 2020 MAK TV Show</p>
+    </section>
+    <section>
+      <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="aboutPage.html">About</a></li>
+        <li><a href="discoverPage.html">Discover</a></li>
+        <li><a href="favoritePage.html">Favorite</a></li>
+      </ul>
+    </section>
   </footer>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../Scripts/config.js"></script>
+  <script src="../Scripts/menu.js"></script>
   <script src="../Scripts/discover.js"></script>
 </body>
 </html>

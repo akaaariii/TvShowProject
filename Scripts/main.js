@@ -59,13 +59,21 @@ $(function(){
        
     }
 
+    const redirectToTvshowPage = () => {
+      $('img').click(e => {
+        const target = $(e.target);
+        const id = target.attr('id');
+        document.location.href = `./tvShowPage.html?id=${id}`;
+      })
+    }
+
     const displayMovieData = async(movieList) => {
         const list =  $('.list');
         list.empty();
         movieList.forEach((d)=>{
             const isfavorite = checkfavorite(d);
             const card = $('<div class="card"></div>');
-            const img = $('<img>').attr('src', d.image)
+            const img = $('<img>').attr('src', d.image).attr('id', d.id);
             const cardBody = $('<div class="card-body"></div>');
             const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
             const title = $('<h5></h5>').text(`Title : ${d.title}`);
@@ -79,9 +87,11 @@ $(function(){
             cardBody.append(cardTitle);
             card.append(cardBody);
             list.append(card);        
-      })  
-      handlefavoriteList(movieList);    
-  }
+        })  
+        handlefavoriteList(movieList);
+        
+        redirectToTvshowPage();
+    }
 
 
   
