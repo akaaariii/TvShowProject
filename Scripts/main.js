@@ -97,31 +97,31 @@ $(function(){
   
   const displayFavoriteList = async(movieList) => {
     const list =  $('.list2');
-      if (movieList.lenght>0){
-            list.empty();
-            movieList.forEach((d)=>{       
-                const card = $('<div class="card"></div>');
-                const img = $('<img>').attr('src', d.image)
-                const cardBody = $('<div class="card-body"></div>');
-                const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
-                const title = $('<h5></h5>').text(`Title : ${d.title}`);
-                const vote = $('<h5></h5>').text(`Rate : ${d.vote}`);
-                const overview = $('<h5></h5>').text(`Overview : ${d.overview}`);
-                cardTitle.append(overview);
-                cardTitle.append(vote);
-                cardBody.append(title);
-                cardBody.append(img);
-                cardBody.append(cardTitle);
-                card.append(cardBody);
-                list.append(card);        
-        })  
-    }
-    else{
-        const body = $('<div class="message"></div>');
-        const message =$('<h3></h3>').text('You do not have any favorite list');
-        body.append(message);
-        list.append(body);  
-    }
+    list.empty();
+    if(movieList.length >0){
+        movieList.forEach((d)=>{       
+            const card = $('<div class="card"></div>');
+            const img = $('<img>').attr('src', d.image)
+            const cardBody = $('<div class="card-body"></div>');
+            const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
+            const title = $('<h5></h5>').text(`Title : ${d.title}`);
+            const vote = $('<h5></h5>').text(`Rate : ${d.vote}`);
+            const overview = $('<h5></h5>').text(`Overview : ${d.overview}`);
+            cardTitle.append(overview);
+            cardTitle.append(vote);
+            cardBody.append(title);
+            cardBody.append(img);
+            cardBody.append(cardTitle);
+            card.append(cardBody);
+            list.append(card);        
+    })  
+}
+else{
+    const body = $('<div class="message"></div>');
+    const message =$('<h3></h3>').text('You do not have any favorite list');
+    body.append(message);
+    list.append(body);  
+}
 }
 
     getAllList().then((movieList) => {displayMovieData(movieList); })    
