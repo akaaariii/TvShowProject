@@ -1,6 +1,6 @@
 $(function(){
-    let favoriteList = localStorage.getItem('favourite') ? 
-    JSON.parse(localStorage.getItem('favourite')) : [];
+    let favoriteList = localStorage.getItem('favorite') ? 
+    JSON.parse(localStorage.getItem('favorite')) : [];
     
     const getAllList=async()=>{
         try {
@@ -29,12 +29,10 @@ $(function(){
               };
               movieList.push(data);
         })
-        // console.log(movieList)
         return movieList;
     }
-    const checkFavourite = (item) => {
-        const id = toString(item.id);
-        const index = favoriteList.findIndex(e => e.target === id);
+    const checkfavorite = (item) => {
+        const index = favoriteList.findIndex(e => e.id === item.id);
         return (index < 0) ? false : true;
     }
 
@@ -45,43 +43,186 @@ $(function(){
             const id = parseInt(targetId);
             const favorite = movieList.find(list => parseInt(list.id) === id);
             const favIndex = favoriteList.findIndex(list =>parseInt(list.id) === id );
-            // console.log(favIndex)
+            console.log(favIndex)
             if (favIndex < 0) {
                 favoriteList.push(favorite);
             } else {
                 favoriteList.splice(favIndex, 1)
             }
-            console.log(favoriteList)
-            localStorage.setItem('favourite', JSON.stringify(favoriteList));
-            target.toggleClass('favourite');
+            localStorage.setItem('favorite', JSON.stringify(favoriteList));
+            target.toggleClass('favorite');   
+            console.log(favoriteList)      
 
         })
+       
+    }
+
+    const redirectToTvshowPage = () => {
+      $('img').click(e => {
+        const target = $(e.target);
+        const id = target.attr('id');
+        open(`./tvShowPage.html?id=${id}`, '_blank');
+      })
     }
 
     const displayMovieData = async(movieList) => {
         const list =  $('.list');
         list.empty();
         movieList.forEach((d)=>{
-            const isFavourite = checkFavourite(d);
+            console.log(d)
+            const isfavorite = checkfavorite(d);
             const card = $('<div class="card"></div>');
-            const img = $('<img>').attr('src', d.image)
+            const img = $('<img>').attr('src', d.image).attr('id', d.id);
             const cardBody = $('<div class="card-body"></div>');
-            const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
-            const title = $('<h5></h5>').text(`Title : ${d.title}`);
-            const vote = $('<h5></h5>').text(`Rate : ${d.vote}`);
-            const icon = isFavourite ? $('<i class="fas fa-heart favourite"></i>') : $('<i class="fas fa-heart"></i>');
+            const cardInfo = $('<div class="card-info"></div>').attr('id', d.id);
+            const title = $('<h5 class="card-title"></h5>').text(`${d.title}`);
+            //const vote = $('<h5 class="rating"></h5>').text(`Rate : ${d.vote}%`);
+            const icon = isfavorite ? $('<i class="fas fa-heart favorite"></i>') : $('<i class="fas fa-heart"></i>');
            
-            cardTitle.append(vote);
-            cardTitle.append(icon);
-            cardBody.append(title);
+            //cardTitle.append(vote);
             cardBody.append(img);
-            cardBody.append(cardTitle);
+            cardInfo.append(icon);
+            cardInfo.append(title);
+            cardBody.append(cardInfo);
             card.append(cardBody);
-            list.append(card);        
-      })  
-      handlefavoriteList(movieList);    
-  }
+            list.append(card);  
+            
+            // vote average
+            const progressIcon = $('<div class="progress_icon"></div>');
+            const progressDiv = $('<div class="progress"></div>').attr("data-value", d.vote*10);
+            const spanLeft = $('<span class="progress-left"></span');
+            const spanRight = $('<span class="progress-right"></span');
+            const spanBarLeft = $('<span class="progress-bar"></span>');
+            const spanBarRight = $('<span class="progress-bar"></span>');
+            
+            if(d.vote*10 >= 80){
+            spanBarLeft.addClass('border-success');
+            spanBarRight.addClass('border-success');
+            } else {
+            spanBarLeft.addClass('border-warning');
+            spanBarRight.addClass('border-warning');
+            }
+
+            spanLeft.append(spanBarLeft);
+            spanRight.append(spanBarRight);
+            const progressValue = $('<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"></div>');
+            const pValue = $('<div class="p font-weight-bold"></div>').text(d.vote*10);
+            const sup = $('<sup class="small"></sup>').text('%')
+            pValue.append(sup);
+            progressValue.append(pValue);
+            progressDiv.append(spanLeft);
+            progressDiv.append(spanRight);
+            progressDiv.append(progressValue);
+            progressIcon.append(progressDiv);
+            card.append(progressIcon);
+
+            $(".list").append(card);
+        });
+
+        $(".progress").each(function () {
+            var value = $(this).attr("data-value");
+            var left = $(this).find(".progress-left .progress-bar");
+            var right = $(this).find(".progress-right .progress-bar");
+        
+            if (value > 0) {
+            if (value <= 50) {
+                right.css("transform", "rotate(" + percentageToDegrees(value) + "deg)");
+            } else {
+                right.css("transform", "rotate(180deg)");
+                left.css(
+                "transform",
+                "rotate(" + percentageToDegrees(value - 50) + "deg)"
+                );
+            }
+            }
+        })  
+        handlefavoriteList(movieList);
+        
+        redirectToTvshowPage();
+    }
+
+    // For progress bar
+    const percentageToDegrees = (percentage) => {
+        return (percentage / 100) * 360;
+    }
+
+
+  
+  const displayFavoriteList = async(movieList) => {
+    const list =  $('.list2');
+    list.empty();
+    if(movieList.length >0){
+        movieList.forEach((d)=>{       
+            const card = $('<div class="card"></div>');
+            const img = $('<img>').attr('src', d.image).attr('id', d.id);
+            const cardBody = $('<div class="card-body"></div>');
+            const cardInfo = $('<div class="card-info"></div>').attr('id', d.id);
+            const title = $('<h5 class="card-title"></h5>').text(`${d.title}`);
+            cardBody.append(img);
+            cardInfo.append(title);
+            cardBody.append(cardInfo);
+            card.append(cardBody);
+            list.append(card);
+
+            // vote average
+            const progressIcon = $('<div class="progress_icon"></div>');
+            const progressDiv = $('<div class="progress"></div>').attr("data-value", d.vote*10);
+            const spanLeft = $('<span class="progress-left"></span');
+            const spanRight = $('<span class="progress-right"></span');
+            const spanBarLeft = $('<span class="progress-bar"></span>');
+            const spanBarRight = $('<span class="progress-bar"></span>');
+            
+            if(d.vote*10 >= 80){
+            spanBarLeft.addClass('border-success');
+            spanBarRight.addClass('border-success');
+            } else {
+            spanBarLeft.addClass('border-warning');
+            spanBarRight.addClass('border-warning');
+            }
+
+            spanLeft.append(spanBarLeft);
+            spanRight.append(spanBarRight);
+            const progressValue = $('<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"></div>');
+            const pValue = $('<div class="p font-weight-bold"></div>').text(d.vote*10);
+            const sup = $('<sup class="small"></sup>').text('%')
+            pValue.append(sup);
+            progressValue.append(pValue);
+            progressDiv.append(spanLeft);
+            progressDiv.append(spanRight);
+            progressDiv.append(progressValue);
+            progressIcon.append(progressDiv);
+            card.append(progressIcon);
+
+            $(".list").append(card);
+        });
+
+        $(".progress").each(function () {
+            var value = $(this).attr("data-value");
+            var left = $(this).find(".progress-left .progress-bar");
+            var right = $(this).find(".progress-right .progress-bar");
+        
+            if (value > 0) {
+            if (value <= 50) {
+                right.css("transform", "rotate(" + percentageToDegrees(value) + "deg)");
+            } else {
+                right.css("transform", "rotate(180deg)");
+                left.css(
+                "transform",
+                "rotate(" + percentageToDegrees(value - 50) + "deg)"
+                );
+            }
+            }
+        })
+    
+}
+else{
+    const body = $('<div class="message"></div>');
+    const message =$('<h3></h3>').text('You do not have any favorite list');
+    body.append(message);
+    list.append(body);  
+}
+}
 
     getAllList().then((movieList) => {displayMovieData(movieList); })    
- 
+    displayFavoriteList(favoriteList);
 })
