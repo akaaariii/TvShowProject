@@ -1,44 +1,31 @@
-:root{
-   --font-name :'Commissioner', sans-serif;
-   --max-width :90%;
-   --dark-color:#0e0e0f;
-   --light-color: rgb(207, 204, 204);
-   --brand-color:#3131ee;
-   --four-col : 25%;
-   --margin-bottom: 10px;
-   --small-pad : 8px; 
-   --medium-pad : 12px;
-   --background: rgb(51, 49, 49);
-   --header-background :rgb(104, 5, 5);
-   --medium-font:20px;
-   --larg-font:30px;   
-   --favorite-color :rgb(104, 5, 5);
-}
-*, *:before , *:after {
-   box-sizing: inherit;
-}
-img{
-   max-width:100%;
-   display:block;
-   position : unset;
-   /* max-height: 350px; */
-}
-body{
-   max-width: var(--max-width);
-   margin: auto;
-   background-color: var(--dark-color);
-}
-header{
-   margin-top:var(--margin-bottom);
-}
-main {
-    min-height: calc(100vh - 56px - 50px);
+.container-fluid {
+    max-width: var(--max-width);
+ }
+ 
+ .page-description {
+     line-height: 1.6;
+     padding-left: 1rem;
   }
-.list {
+
+.list, .list2 {
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
+    margin-top: 40px;
  }
+ .list:after,
+ .list:before,
+ .list2:after,
+ .list2:before {
+      content: "";
+      display: block;
+      width: 25%;
+      height: 0;
+}
+.list:before,
+.list2:before {
+      order: 1;
+}
  
  .card {
     width:var(--four-col);
@@ -46,77 +33,140 @@ main {
     position : relative;
     /* max-height: calc(80vh - 56px - 50px); */
     background-color: var(--background);
-    border-color:  rgb(143, 140, 140);
+    border: none;
+    padding: 0 1rem 2rem 1rem;
+    transition: transform .3s;
+ }
+ 
+.card:hover {
+   transform: scale(1.1);
+   z-index: 999;
+ }
+ .card-body {
+    padding: 0;
  }
  .card a{
     color:var(--amazon-color);
  }
- .card-title{
-    color:var(--light-color);
-    padding: var(--small-pad);
- }
  .card-body img {
    cursor: pointer;
  }
- h5{
+ h5.card-title {
     color: var(--light-color);
+    font-size: var(--font-medium);
+ }
+
+ .rating {
+    font-size: var(--font-medium);
  }
  .header-content{
     margin: var(--margin-bottom);
     color: var(--light-color);
     padding: var(--medium-pad);
  }
- .container-fluid {
-    max-width: var(--max-width);
- }
+ 
  .fa-heart{
     color: var(--light-color);
+    margin-right: 5px;
  }
- .favourite {
-    color: var(--favourite-color);
+ .favorite {
+    color: var(--favorite-color);
  }
- .list {
-   display:flex;
-   flex-wrap:wrap;
-   justify-content: space-between;
+
+ .card-info {
+    display: flex;
+    margin-top: 10px;
+ }
+
+ @media (max-width :768px ) {
+   .card {
+      width: 32%;
+   }
+   .list:after,
+   .list:before,
+   .list2:after,
+   .list2:before {
+      width: 32%;
+}
+}
+@media (max-width :425px ) {
+   main {
+      padding: 0;
+   }
+   .card {
+      width: 50%;
+   }
 }
 
-.card {
-   width:var(--four-col);
-   margin-bottom: var(--margin-bottom);
-   position : relative;
-   /* max-height: calc(80vh - 56px - 50px); */
-   background-color: var(--background);
-   border-color:  rgb(143, 140, 140);
-}
-.card a{
-   color:var(--amazon-color);
-}
-.card-title{
-   color:var(--light-color);
-   padding: var(--small-pad);
-}
-h5{
-   color: var(--light-color);
-}
-.header-content{
-   margin: var(--margin-bottom);
-   color: var(--light-color);
-   padding: var(--medium-pad);
-}
-.container-fluid {
-   max-width: var(--max-width);
-}
-.fa-heart{
-   color: var(--light-color);
-}
-.favorite {
-   color: var(--favorite-color);
-}
+ /* CIRCULAR PROGRESS BAR bootstrap */
+ .progress_icon {
+    position: absolute;
+    top:-10px;
+    right: 0;
+   }
+.progress {
+   width: 45px;
+   height: 45px;
+   background: none;
+   position: relative;
+ }
+ .progress::after {
+   content: "";
+   width: 100%;
+   height: 100%;
+   border-radius: 50%;
+   background-color: #313131;
+   border: 2px solid #eee;
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+ .progress > span {
+   width: 50%;
+   height: 100%;
+   overflow: hidden;
+   position: absolute;
+   top: 0;
+   z-index: 1;
+ }
+ .progress .progress-left {
+   left: 0;
+ }
+ .progress .progress-bar {
+   width: 100%;
+   height: 100%;
+   background: none;
+   border-width: 2px;
+   border-style: solid;
+   position: absolute;
+   top: 0;
+ }
+ .progress .progress-left .progress-bar {
+   left: 100%;
+   border-top-right-radius: 80px;
+   border-bottom-right-radius: 80px;
+   border-left: 0;
+   -webkit-transform-origin: center left;
+   transform-origin: center left;
+ }
+ .progress .progress-right {
+   right: 0;
+ }
+ .progress .progress-right .progress-bar {
+   left: -100%;
+   border-top-left-radius: 80px;
+   border-bottom-left-radius: 80px;
+   border-right: 0;
+   -webkit-transform-origin: center right;
+   transform-origin: center right;
+ }
+ .progress .progress-value {
+   z-index: 100;
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+ 
+
 

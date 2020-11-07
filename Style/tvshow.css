@@ -1,14 +1,18 @@
+.container-fluid {
+  padding: 40px 20px;
+}
+
+h2 {
+  padding-left: 0;
+  text-align: center;
+}
+
 .tvshow_image img {
   width: 60%;
   margin: auto;
 }
 .tvshow_info {
   margin: 10px auto;
-}
-.tvshow_info h2 {
-  font-family: var(--font-title);
-  margin-bottom: var(--margin-bottom);
-  text-align: center;
 }
 .tvshow_info > p {
   text-align: center;
@@ -19,6 +23,21 @@
 .tvshow_info > div {
   margin: 30px 0;
 }
+.tv-link {
+  margin-left: 10px;
+  background-color: var(--brand-color);
+  color: var(--light-color);
+  padding: 7px 20px 9px;
+  border-radius: 5px;
+  transition: 0.4s;
+  display: inline-block;
+  margin-top: 15px;
+}
+.tv-link:hover {
+  background-color: var(--hover-color);
+  color: var(--light-color);
+}
+
 .progress_icon .p {
   font-size: var(--font-medium);
 }
@@ -53,7 +72,7 @@
   height: 80px;
   background: none;
   position: relative;
-  margin: 20px 0;
+  margin: 20px auto;
 }
 .progress::after {
   content: "";
@@ -110,4 +129,14 @@
   position: absolute;
   top: 0;
   left: 0;
+}
+
+@media (min-width: 768px){
+  .container-fluid {
+    padding: 0 2rem;
+  }
+  .progress {
+    margin: 20px 0;
+  }
+
 }

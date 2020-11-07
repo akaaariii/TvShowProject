@@ -6,7 +6,7 @@
   --dark-color: #181818;
   --back-color: #0d253f;
   --hover-color:#f8658a;
-  --favourite-color :#eb1248;
+  --favorite-color :#eb1248;
 
   --font-large: 36px;
   --font-semi-large: 24px;
@@ -20,6 +20,7 @@
   --margin-bottom: 10px;
   --small-pad : 8px; 
   --medium-pad : 12px;
+  --max-witdh: 80%;
 }
 
 /*********************** Reset Styles ***********************/
@@ -205,7 +206,15 @@ main {
   background: var(--back-color);
   min-height: calc(100vh - 56px - 50px);
   color: var(--light-color);
-  padding: 20px;
+}
+h2 {
+  padding: var(--medium-pad) 0 var(--medium-pad) 1rem;
+  font-family: var(--font-title);
+}
+@media (min-width :768px ) {
+  main {
+    padding: 20px;
+  }
 }
 
 /* Footer */

@@ -1,6 +1,5 @@
-h2 {
-  padding-top: 20px;
-  font-family: var(--font-title);
+.container-fluid {
+  max-width: var(--max-width);
 }
 .choose_option {
   padding: 30px;
@@ -21,7 +20,7 @@ select {
   grid-template-columns: repeat(2, 1fr);
 }
 .tvshow_item {
-  padding: 3px;
+  padding: 0 1rem;
   position: relative;
   margin-bottom: 25px;
   transition: transform .3s;
@@ -36,11 +35,11 @@ select {
 .progress_icon {
   position: absolute;
   right: 0;
-  top: 0;
+  top: -10px;
 }
 h3 {
-  color: #9e9e9e;
-  font-size: 1.2em;
+  color: var(--light-color);
+  font-size: var(--font-medium);
   text-align: center;
   margin-top: 10px;
 }

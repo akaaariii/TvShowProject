@@ -79,8 +79,8 @@ const displayTvshowData = (data) => {
   $('.tvshow_info').append(overviewDiv);
 
   // homepage
-  const linkText = $('<p></p>').text('You want to watch this TV show? Click ');
-  const link = $('<a></a>').attr('href', data.link).text('here.');
+  const linkText = $('<p></p>').text('You want to watch this TV show?');
+  const link = $('<a class="tv-link"></a>').attr('href', data.link).text('Click Here');
   linkText.append(link);
   $('.tvshow_info').append(linkText);
 

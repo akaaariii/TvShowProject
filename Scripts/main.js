@@ -22,7 +22,7 @@ $(function(){
             let data = {
                 title:d.original_name,
                 image:'https://image.tmdb.org/t/p/w440_and_h660_face'+ d.poster_path,
-                vote:d.vote_average*10,
+                vote:d.vote_average,
                 release_date:d.release_date,
                 overview:d.overview,
                 id:d.id 
@@ -74,22 +74,76 @@ $(function(){
             const card = $('<div class="card"></div>');
             const img = $('<img>').attr('src', d.image).attr('id', d.id);
             const cardBody = $('<div class="card-body"></div>');
-            const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
-            const title = $('<h5></h5>').text(`Title : ${d.title}`);
-            const vote = $('<h5></h5>').text(`Rate : ${d.vote}%`);
+            const cardInfo = $('<div class="card-info"></div>').attr('id', d.id);
+            const title = $('<h5 class="card-title"></h5>').text(`${d.title}`);
+            //const vote = $('<h5 class="rating"></h5>').text(`Rate : ${d.vote}%`);
             const icon = isfavorite ? $('<i class="fas fa-heart favorite"></i>') : $('<i class="fas fa-heart"></i>');
            
-            cardTitle.append(vote);
-            cardTitle.append(icon);
-            cardBody.append(title);
+            //cardTitle.append(vote);
             cardBody.append(img);
-            cardBody.append(cardTitle);
+            cardInfo.append(icon);
+            cardInfo.append(title);
+            cardBody.append(cardInfo);
             card.append(cardBody);
-            list.append(card);        
+            list.append(card);  
+            
+            // vote average
+            const progressIcon = $('<div class="progress_icon"></div>');
+            const progressDiv = $('<div class="progress"></div>').attr("data-value", d.vote*10);
+            const spanLeft = $('<span class="progress-left"></span');
+            const spanRight = $('<span class="progress-right"></span');
+            const spanBarLeft = $('<span class="progress-bar"></span>');
+            const spanBarRight = $('<span class="progress-bar"></span>');
+            
+            if(d.vote*10 >= 80){
+            spanBarLeft.addClass('border-success');
+            spanBarRight.addClass('border-success');
+            } else {
+            spanBarLeft.addClass('border-warning');
+            spanBarRight.addClass('border-warning');
+            }
+
+            spanLeft.append(spanBarLeft);
+            spanRight.append(spanBarRight);
+            const progressValue = $('<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"></div>');
+            const pValue = $('<div class="p font-weight-bold"></div>').text(d.vote*10);
+            const sup = $('<sup class="small"></sup>').text('%')
+            pValue.append(sup);
+            progressValue.append(pValue);
+            progressDiv.append(spanLeft);
+            progressDiv.append(spanRight);
+            progressDiv.append(progressValue);
+            progressIcon.append(progressDiv);
+            card.append(progressIcon);
+
+            $(".list").append(card);
+        });
+
+        $(".progress").each(function () {
+            var value = $(this).attr("data-value");
+            var left = $(this).find(".progress-left .progress-bar");
+            var right = $(this).find(".progress-right .progress-bar");
+        
+            if (value > 0) {
+            if (value <= 50) {
+                right.css("transform", "rotate(" + percentageToDegrees(value) + "deg)");
+            } else {
+                right.css("transform", "rotate(180deg)");
+                left.css(
+                "transform",
+                "rotate(" + percentageToDegrees(value - 50) + "deg)"
+                );
+            }
+            }
         })  
         handlefavoriteList(movieList);
         
         redirectToTvshowPage();
+    }
+
+    // For progress bar
+    const percentageToDegrees = (percentage) => {
+        return (percentage / 100) * 360;
     }
 
 
@@ -100,20 +154,66 @@ $(function(){
     if(movieList.length >0){
         movieList.forEach((d)=>{       
             const card = $('<div class="card"></div>');
-            const img = $('<img>').attr('src', d.image)
+            const img = $('<img>').attr('src', d.image).attr('id', d.id);
             const cardBody = $('<div class="card-body"></div>');
-            const cardTitle = $('<div class="card-title"></div>').attr('id', d.id);
-            const title = $('<h5></h5>').text(`Title : ${d.title}`);
-            const vote = $('<h5></h5>').text(`Rate : ${d.vote}`);
-            const overview = $('<h5></h5>').text(`Overview : ${d.overview}`);
-            cardTitle.append(overview);
-            cardTitle.append(vote);
-            cardBody.append(title);
+            const cardInfo = $('<div class="card-info"></div>').attr('id', d.id);
+            const title = $('<h5 class="card-title"></h5>').text(`${d.title}`);
             cardBody.append(img);
-            cardBody.append(cardTitle);
+            cardInfo.append(title);
+            cardBody.append(cardInfo);
             card.append(cardBody);
-            list.append(card);        
-    })  
+            list.append(card);
+
+            // vote average
+            const progressIcon = $('<div class="progress_icon"></div>');
+            const progressDiv = $('<div class="progress"></div>').attr("data-value", d.vote*10);
+            const spanLeft = $('<span class="progress-left"></span');
+            const spanRight = $('<span class="progress-right"></span');
+            const spanBarLeft = $('<span class="progress-bar"></span>');
+            const spanBarRight = $('<span class="progress-bar"></span>');
+            
+            if(d.vote*10 >= 80){
+            spanBarLeft.addClass('border-success');
+            spanBarRight.addClass('border-success');
+            } else {
+            spanBarLeft.addClass('border-warning');
+            spanBarRight.addClass('border-warning');
+            }
+
+            spanLeft.append(spanBarLeft);
+            spanRight.append(spanBarRight);
+            const progressValue = $('<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center"></div>');
+            const pValue = $('<div class="p font-weight-bold"></div>').text(d.vote*10);
+            const sup = $('<sup class="small"></sup>').text('%')
+            pValue.append(sup);
+            progressValue.append(pValue);
+            progressDiv.append(spanLeft);
+            progressDiv.append(spanRight);
+            progressDiv.append(progressValue);
+            progressIcon.append(progressDiv);
+            card.append(progressIcon);
+
+            $(".list").append(card);
+        });
+
+        $(".progress").each(function () {
+            var value = $(this).attr("data-value");
+            var left = $(this).find(".progress-left .progress-bar");
+            var right = $(this).find(".progress-right .progress-bar");
+        
+            if (value > 0) {
+            if (value <= 50) {
+                right.css("transform", "rotate(" + percentageToDegrees(value) + "deg)");
+            } else {
+                right.css("transform", "rotate(180deg)");
+                left.css(
+                "transform",
+                "rotate(" + percentageToDegrees(value - 50) + "deg)"
+                );
+            }
+            }
+        })
+    
 }
 else{
     const body = $('<div class="message"></div>');
