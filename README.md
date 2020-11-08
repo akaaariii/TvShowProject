@@ -4,7 +4,8 @@
 ## Overview
 This product uses API from [TMDb](https://www.themoviedb.org/)
 
-![overview](https://user-images.githubusercontent.com/64046039/98461153-bd35e380-215e-11eb-8b2c-0344aa8c5db9.png)
+![overview](https://user-images.githubusercontent.com/64046039/98461209-333a4a80-215f-11eb-8e16-fb12f1e684ca.png)
+
 
 ## Teck Stack
 * HTML
