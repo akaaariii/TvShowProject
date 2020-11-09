@@ -14,7 +14,7 @@ This product uses API from [TMDb](https://www.themoviedb.org/)
 * Bootstrap
 * Font Awesome
 
-# Member
+## Member
 * Akari
 * Kimi
 * Mahsa
